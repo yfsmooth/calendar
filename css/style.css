@@ -1,0 +1,78 @@
+@font-face {
+    font-family: 'calendar';
+    src:    url('fonts/calendar.eot?eju062');
+    src:    url('fonts/calendar.eot?eju062#iefix') format('embedded-opentype'),
+        url('fonts/calendar.ttf?eju062') format('truetype'),
+        url('fonts/calendar.woff?eju062') format('woff'),
+        url('fonts/calendar.svg?eju062#calendar') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'calendar' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-tfsj:before {
+    content: "\e900";
+}
+.icon-phone-24:before {
+    content: "\e901";
+}
+.icon-pencil:before {
+    content: "\e902";
+}
+.icon-journal:before {
+    content: "\e903";
+}
+.icon-date:before {
+    content: "\e904";
+}
+.icon-file:before {
+    content: "\e905";
+}
+.icon-clip:before {
+    content: "\e906";
+}
+.icon-file-excel:before {
+    content: "\e907";
+}
+.icon-magnifier:before {
+    content: "\e908";
+}
+.icon-triangle-n:before {
+    content: "\e909";
+}
+.icon-triangle-e:before {
+    content: "\e90a";
+}
+.icon-triangle-s:before {
+    content: "\e90b";
+}
+.icon-triangle-w:before {
+    content: "\e90c";
+}
+.icon-arrow-w:before {
+    content: "\e90d";
+}
+.icon-arrow-e:before {
+    content: "\e90e";
+}
+.icon-alarmclock:before {
+    content: "\e90f";
+}
+.icon-paperclip:before {
+    content: "\e910";
+}
+
