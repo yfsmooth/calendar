@@ -139,9 +139,6 @@ function setNextMonth(){
 	}
 	//改变选择月
 	var selectMonth = $("#selectMonth").val();
-//	if(selectMonth*1+6 == 12)
-//		$("#selectMonth").val(0);
-//	else
 	$("#selectMonth").val((selectMonth*1+6)%12);
 	//改变选择年
 	var index = $("#selectMonIndex").val();//获取选中月下标
@@ -170,9 +167,6 @@ function setLastMonth(){
 	}
 	//改变选择月
 	var selectMonth = $("#selectMonth").val();
-//	if(selectMonth*1-6+12 == 12)
-//		$("#selectMonth").val(0);
-//	else
 	$("#selectMonth").val((selectMonth*1-6+12)%12);
 	//改变选择年
 	var index = $("#selectMonIndex").val();//获取选中月下标
