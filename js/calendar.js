@@ -1,15 +1,17 @@
 /**
  * @Name：日历控件
- * @Description：手机日历控件
+ * @Description：日历控件
  * @author：Huayf
  * @date：2015年1月12日下午
  */
 var evnClick ;
 /*
  * 初始化时间控件，传入要渲染div的id与日历的点击事件
+ * @params: id 需要渲染的div id
+ * @params: evn 日历的点击时间
  */
 function initCalendar(id,evn){
-	var calendarHtml = '<div class="calendar"><p class="calendar-year" id="pcalyear">2015年</p><a href="javascript:setLastMonth();" class="calendar-btn calendar-btn-l"><span class="icon-triangle-w"></span></a><a href="javascript:setNextMonth();" class="calendar-btn  calendar-btn-r"><span class="icon-triangle-e"></span></a><div class="calendar-months"><ul class="calendar-months" id="calmonthli"><li>1月</li><li>2月</li><li>3月</li><li class="months-cur">4月</li><li>5月</li><li>6月</li><li>7月</li><input type="hidden" value="" id="hidyear0" /><input type="hidden" value="" id="hidyear1" /><input type="hidden" value="" id="hidyear2" /><input type="hidden" value="" id="hidyear3" /><input type="hidden" value="" id="hidyear4" /><input type="hidden" value="" id="hidyear5" /><input type="hidden" value="" id="hidyear6" /></ul></div><div class="calendar-day" ><ul class="week week-b week-hd" ><li>日</li><li>一</li><li>二</li><li>三</li><li>四</li><li>五</li><li>六</li></ul><ul class="week week-b week-day week-day-b" id="caldayli"><li></li><li></li><li></li><li></li><li></li><li></li><li class="duty-full"><span>2</span><p>全天</p></li></ul></div></div><div  class="title-full" id="disDate"></div><input type="hidden" value="" id="selectYear"><input type="hidden" value="" id="selectMonth"><input type="hidden" value="" id="selectDay"><input type="hidden" value="3" id="selectMonIndex">';
+	var calendarHtml = '<div class="calendar"><p class="calendar-year" id="pcalyear">2015年</p><a href="javascript:setLastMonth();" class="calendar-btn calendar-btn-l"><span class="icon-triangle-w"><</span></a><a href="javascript:setNextMonth();" class="calendar-btn  calendar-btn-r"><span class="icon-triangle-e">></span></a><div class="calendar-months"><ul class="calendar-months" id="calmonthli"><li>1月</li><li>2月</li><li>3月</li><li class="months-cur">4月</li><li>5月</li><li>6月</li><li>7月</li><input type="hidden" value="" id="hidyear0" /><input type="hidden" value="" id="hidyear1" /><input type="hidden" value="" id="hidyear2" /><input type="hidden" value="" id="hidyear3" /><input type="hidden" value="" id="hidyear4" /><input type="hidden" value="" id="hidyear5" /><input type="hidden" value="" id="hidyear6" /></ul></div><div class="calendar-day" ><ul class="week week-b week-hd" ><li>日</li><li>一</li><li>二</li><li>三</li><li>四</li><li>五</li><li>六</li></ul><ul class="week week-b week-day week-day-b" id="caldayli"><li></li><li></li><li></li><li></li><li></li><li></li><li class="duty-full"><span>2</span><p>全天</p></li></ul></div></div><div  class="title-full" id="disDate"></div><input type="hidden" value="" id="selectYear"><input type="hidden" value="" id="selectMonth"><input type="hidden" value="" id="selectDay"><input type="hidden" value="3" id="selectMonIndex">';
   	$("#"+id).html(calendarHtml);
 	evnClick = evn;
 	initTime();
@@ -74,10 +76,12 @@ function setCalendar(){
 			}
 		}
 	}
-	
+
 	$("#caldayli li").click(function(){//绑定日历li点击事件
 			setDayStyle(this);
-			evnClick();
+			if (evnClick) {
+			    evnClick();
+			}
 	})
 }
 
@@ -124,7 +128,7 @@ function setMonthStyle(dom){
 /*
  * 设置下一页月份，点一下翻半年
  */
-function setNextMonth(){ 
+function setNextMonth(){
 	for(var i=0;i<7;i++){
 		var m = $("#calmonthli li").eq(i).html();
 		m = m.substring(0,m.length-1);
@@ -184,13 +188,22 @@ function setDisDate(){
 	var selectYear = $("#selectYear").val();//获取选中年月日
 	var selectMonth = $("#selectMonth").val();
 	var selectDay = $("#selectDay").val();
-	var now = new Date(selectYear,selectMonth,selectDay);
+	var now = getDisDate();
 	var selectWeek = now.getDay();//获取选中天数日期
 	selectWeek = getweek(selectWeek);
 	//设置年月日
 	$("#disDate").html(selectYear+"年 "+(selectMonth*1+1)+"月 "+selectDay+"日  星期" +selectWeek);
 }
-
+/*
+ * 设置显示日期
+ * return: 当前选择日期
+ */
+function getDisDate(){
+    var selectYear = $("#selectYear").val();//获取选中年月日
+    	var selectMonth = $("#selectMonth").val();
+    	var selectDay = $("#selectDay").val();
+    	return new Date(selectYear,selectMonth,selectDay);
+}
 /*
  * 获得星期
  */
