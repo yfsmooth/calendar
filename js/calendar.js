@@ -9,13 +9,15 @@ var calender = new function (){
 
 	this.init = initCalendar;  // 初始化日历控件
 	this.getDate = getDisDate; // 获取当前所选的日期
+	this.setLastMonth = setLastMonth;
+	this.setNextMonth = setNextMonth;
 	/*
 	 * 初始化时间控件，传入要渲染div的id与日历的点击事件
 	 * @params: id 需要渲染的div id
 	 * @params: evn 日历的点击时间
 	 */
 	function initCalendar(id,evn){
-		var calendarHtml = '<div class="calendar"><p class="calendar-year" id="pcalyear">2015年</p><a href="javascript:setLastMonth();" class="calendar-btn calendar-btn-l"><span class="icon-triangle-w"><</span></a><a href="javascript:setNextMonth();" class="calendar-btn  calendar-btn-r"><span class="icon-triangle-e">></span></a><div class="calendar-months"><ul class="calendar-months" id="calmonthli"><li>1月</li><li>2月</li><li>3月</li><li class="months-cur">4月</li><li>5月</li><li>6月</li><li>7月</li><input type="hidden" value="" id="hidyear0" /><input type="hidden" value="" id="hidyear1" /><input type="hidden" value="" id="hidyear2" /><input type="hidden" value="" id="hidyear3" /><input type="hidden" value="" id="hidyear4" /><input type="hidden" value="" id="hidyear5" /><input type="hidden" value="" id="hidyear6" /></ul></div><div class="calendar-day" ><ul class="week week-b week-hd" ><li>日</li><li>一</li><li>二</li><li>三</li><li>四</li><li>五</li><li>六</li></ul><ul class="week week-b week-day week-day-b" id="caldayli"><li></li><li></li><li></li><li></li><li></li><li></li><li class="duty-full"><span>2</span><p>全天</p></li></ul></div></div><div  class="title-full" id="disDate"></div><input type="hidden" value="" id="selectYear"><input type="hidden" value="" id="selectMonth"><input type="hidden" value="" id="selectDay"><input type="hidden" value="3" id="selectMonIndex">';
+		var calendarHtml = '<div class="calendar"><p class="calendar-year" id="pcalyear">2015年</p><a href="javascript:calender.setLastMonth();" class="calendar-btn calendar-btn-l"><span class="icon-triangle-w"><</span></a><a href="javascript:calender.setNextMonth();" class="calendar-btn  calendar-btn-r"><span class="icon-triangle-e">></span></a><div class="calendar-months"><ul class="calendar-months" id="calmonthli"><li>1月</li><li>2月</li><li>3月</li><li class="months-cur">4月</li><li>5月</li><li>6月</li><li>7月</li><input type="hidden" value="" id="hidyear0" /><input type="hidden" value="" id="hidyear1" /><input type="hidden" value="" id="hidyear2" /><input type="hidden" value="" id="hidyear3" /><input type="hidden" value="" id="hidyear4" /><input type="hidden" value="" id="hidyear5" /><input type="hidden" value="" id="hidyear6" /></ul></div><div class="calendar-day" ><ul class="week week-b week-hd" ><li>日</li><li>一</li><li>二</li><li>三</li><li>四</li><li>五</li><li>六</li></ul><ul class="week week-b week-day week-day-b" id="caldayli"><li></li><li></li><li></li><li></li><li></li><li></li><li class="duty-full"><span>2</span><p>全天</p></li></ul></div></div><div  class="title-full" id="disDate"></div><input type="hidden" value="" id="selectYear"><input type="hidden" value="" id="selectMonth"><input type="hidden" value="" id="selectDay"><input type="hidden" value="3" id="selectMonIndex">';
 		$("#"+id).html(calendarHtml);
 		evnClick = evn;
 		initTime();

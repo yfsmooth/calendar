@@ -8,13 +8,15 @@ var timebar = new function() {
 
 	this.init = initTimeBar;  // 初始化日历控件
 	this.getDate = getDisDate; // 获取当前所选的日期
+    this.nextTime = nextTime;
+    this.lastTime = lastTime;
 
 	var now = new Date();
 	/*
 	 * 初始化时间控件，传入要渲染div的id，和时间的点击事件
 	 */
 	function initTimeBar(id,evn){
-		var timeHtml = '<p  class="calendar-year" id="calyearp"></p><a href="javascript:nextTime();" class="mt20 calendar-btn calendar-btn-l"><span class="icon-triangle-w"><</span></a><a href="javascript:lastTime();" class="mt20 calendar-btn calendar-btn-r"><span class="icon-triangle-e">></span></a><div class="calendar-day"><ul class="week week-hd "><li id="wli1">日</li><li id="wli2">一</li><li id="wli3">二</li><li id="wli4">三</li><li id="wli5">四</li><li id="wli6">五</li><li id="wli7">六</li></ul><ul class="week  week-day " id="dul"><li id="dli1"><span>1</span><input type="hidden" value=""/></li><li id="dli2"><span>2</span><input type="hidden" value=""/></li><li id="dli3"><span>3</span><input type="hidden" value=""/></li><li class="duty-cur" id="dli4"><span>4</span><input type="hidden" value=""/></li><li id="dli5"><span>5</span><input type="hidden" value=""/></li><li id="dli6"><span>6</span><input type="hidden" value=""/></li><li id="dli7"><span>7</span><input type="hidden" value=""/></li></ul>';
+		var timeHtml = '<p  class="calendar-year" id="calyearp"></p><a href="javascript:timebar.nextTime();" class="mt20 calendar-btn calendar-btn-l"><span class="icon-triangle-w"><</span></a><a href="javascript:timebar.lastTime();" class="mt20 calendar-btn calendar-btn-r"><span class="icon-triangle-e">></span></a><div class="calendar-day"><ul class="week week-hd "><li id="wli1">日</li><li id="wli2">一</li><li id="wli3">二</li><li id="wli4">三</li><li id="wli5">四</li><li id="wli6">五</li><li id="wli7">六</li></ul><ul class="week  week-day " id="dul"><li id="dli1"><span>1</span><input type="hidden" value=""/></li><li id="dli2"><span>2</span><input type="hidden" value=""/></li><li id="dli3"><span>3</span><input type="hidden" value=""/></li><li class="duty-cur" id="dli4"><span>4</span><input type="hidden" value=""/></li><li id="dli5"><span>5</span><input type="hidden" value=""/></li><li id="dli6"><span>6</span><input type="hidden" value=""/></li><li id="dli7"><span>7</span><input type="hidden" value=""/></li></ul>';
 		$("#"+id).html(timeHtml);
 		showTime();//初始化时间
 		var distime = $("#dli4 input").val();
